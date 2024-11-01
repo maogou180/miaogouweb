@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>秒购电子商务平台</title>
+		<style>
+			:root {
+				--primary-color: #ff6b6b;
+				--secondary-color: #4ecdc4;
+				--accent-color: #feca57;
+				--background-color: #f7f7f7;
+				--text-color: #333;
+			}
+
+			body {
+				margin: 0;
+				font-family: Arial, sans-serif;
+				background-color: var(--background-color);
+				color: var(--text-color);
+				overflow-x: hidden;
+			}
+
+			header {
+				background-color: var(--primary-color);
+				color: white;
+				padding: 20px;
+				text-align: center;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+				position: relative;
+				z-index: 1;
+			}
+
+			header h1 {
+				margin: 0;
+				font-size: 2.5rem;
+			}
+
+			header p {
+				font-size: 1.2rem;
+			}
+
+			.marquee {
+				margin: 20px 0;
+				padding: 10px;
+				background-color: var(--accent-color);
+				color: white;
+				font-size: 1.2rem;
+				white-space: nowrap;
+				overflow: hidden;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			}
+
+			.marquee span {
+				display: inline-block;
+				padding-left: 100%;
+				animation: marquee 15s linear infinite;
+			}
+
+			@keyframes marquee {
+				from {
+					transform: translateX(100%);
+				}
+
+				to {
+					transform: translateX(-100%);
+				}
+			}
+
+			.carousel {
+				width: 100%;
+				height: 400px;
+				overflow: hidden;
+				margin-bottom: 40px;
+				position: relative;
+				display: flex;
+				align-items: center;
+			}
+
+			.carousel img {
+				height: 100%;
+				max-width: none;
+				/* 禁用自动宽度适应 */
+				object-fit: cover;
+				/* 确保高度填满，保持图片比例 */
+				margin: 0 auto;
+				/* 水平居中 */
+				transition: opacity 1s ease;
+				/* 平滑切换效果 */
+				opacity: 0;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			.carousel img.active {
+				opacity: 1;
+				/* 当前图片显示 */
+				z-index: 1;
+			}
+
+			@keyframes slide {
+				0% {
+					transform: translateX(0);
+				}
+
+				25% {
+					transform: translateX(-100%);
+				}
+
+				50% {
+					transform: translateX(-200%);
+				}
+
+				75% {
+					transform: translateX(-300%);
+				}
+
+				100% {
+					transform: translateX(0);
+				}
+			}
+
+			section {
+				padding: 40px;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+
+			section h2 {
+				color: var(--primary-color);
+				margin-bottom: 20px;
+				font-size: 2rem;
+				border-bottom: 2px solid var(--primary-color);
+				padding-bottom: 10px;
+			}
+
+			section p {
+				line-height: 1.6;
+				font-size: 1.1rem;
+			}
+
+			.highlight {
+				color: var(--secondary-color);
+				font-weight: bold;
+			}
+
+			.snowflakes {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: 0;
+			}
+
+			.snowflake {
+				position: absolute;
+				top: -10px;
+				background-color: white;
+				border-radius: 50%;
+				opacity: 0.8;
+				width: 8px;
+				height: 8px;
+				animation: fall linear infinite;
+			}
+
+			@keyframes fall {
+				0% {
+					transform: translateY(-10px) rotate(0deg);
+					opacity: 0.8;
+				}
+
+				100% {
+					transform: translateY(100vh) rotate(360deg);
+					opacity: 0.4;
+				}
+			}
+
+			footer {
+				background-color: var(--primary-color);
+				color: white;
+				text-align: center;
+				padding: 20px;
+				position: relative;
+				width: 100%;
+				bottom: 0;
+				z-index: 1;
+			}
+
+			footer p {
+				margin: 0;
+			}
+
+			.return-link {
+				margin-top: 30px;
+				display: inline-block;
+				padding: 10px 20px;
+				background-color: var(--primary-color);
+				color: white;
+				text-decoration: none;
+				border-radius: 5px;
+				transition: background-color 0.3s ease;
+			}
+
+			.return-link:hover {
+				background-color: var(--secondary-color);
+			}
+
+			/* Snowflake animation settings */
+			.snowflake:nth-child(odd) {
+				animation-duration: 10s;
+				animation-delay: 0s;
+			}
+
+			.snowflake:nth-child(even) {
+				animation-duration: 15s;
+				animation-delay: 5s;
+			}
+		</style>
+	</head>
+	<body>
+
+		<header>
+			<h1>欢迎来到秒购电子商务平台</h1>
+			<p>快速、安全、便捷的购物体验，从这里开始！</p>
+		</header>
+
+		<!-- 跑马灯 -->
+		<div class="marquee">
+			<span>秒购限时优惠：全场商品最低五折！抓紧时间，尽享购物乐趣！</span>
+		</div>
+
+		<!-- 轮播图 -->
+		<div class="carousel">
+			<img src="img/image1.jpg" alt="新品推荐" class="active">
+			<img src="img/image2.jpg" alt="热销爆款">
+			<img src="img/image3.png" alt="限时优惠">
+			<img src="img/image4.jpg" alt="独家定制">
+		</div>
+
+		<!-- 主体内容 -->
+		<section>
+			<h2>关于秒购</h2>
+			<p>秒购电子商务平台是一个致力于为消费者提供便捷购物体验的创新平台。我们汇聚了全球各类优质商品，无论是家用电器、数码产品，还是日常用品、食品生鲜，您都可以在秒购找到最合适的选择。</p>
+			<p>我们以用户为中心，提供多种支付方式、快速的物流配送服务以及无忧的售后保障，确保每位消费者都能享受到最顺畅的购物体验。</p>
+		</section>
+
+		<section>
+			<h2>我们的特色</h2>
+			<p>秒购平台不仅仅是一个购物平台，更是一个便捷、智能化的购物助手。我们的特色包括：</p>
+			<ul>
+				<li><span class="highlight">极速购物：</span>无需等待，超快的商品搜索和下单体验，让您购物更高效。</li>
+				<li><span class="highlight">多种商品选择：</span>从电子产品到日常生活用品，种类丰富，满足您的每一个需求。</li>
+				<li><span class="highlight">个性化推荐：</span>根据您的购物习惯，平台智能推荐最符合您需求的商品。</li>
+				<li><span class="highlight">安全支付：</span>多种支付方式，确保您的交易安全无忧。</li>
+				<li><span class="highlight">快捷配送：</span>与顶级物流公司合作，快速送货到家，确保商品安全到达。</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>为什么选择秒购？</h2>
+			<p>选择秒购，您将享受从商品浏览到订单完成的全流程优质服务。我们致力于为消费者提供一个可信赖的电子商务环境，您的每一次购物都将是愉快的体验。</p>
+			<p>无论您是希望快速购买日常用品，还是寻找特定的品牌或高科技产品，秒购都能为您提供合适的选择。</p>
+			<a href="zhuye.html" class="return-link">返回首页</a>
+		</section>
+
+		<footer>
+			<p>© 2024 秒购电子商务平台 | 版权所有</p>
+		</footer>
+
+		<!-- 雪花效果 -->
+		<div class="snowflakes">
+			<div class="snowflake" style="left: 10%;"></div>
+			<div class="snowflake" style="left: 30%;"></div>
+			<div class="snowflake" style="left: 50%;"></div>
+			<div class="snowflake" style="left: 70%;"></div>
+			<div class="snowflake" style="left: 90%;"></div>
+		</div>
+
+		<script>
+			// 实现轮播图的自动切换
+			let index = 0;
+			const slides = document.querySelectorAll('.carousel img');
+			const totalSlides = slides.length;
+
+			function showSlide(i) {
+				slides.forEach((slide, idx) => {
+					slide.classList.remove('active');
+					if (idx === i) {
+						slide.classList.add('active');
+					}
+				});
+			}
+
+			function nextSlide() {
+				index = (index + 1) % totalSlides;
+				showSlide(index);
+			}
+
+			setInterval(nextSlide, 3000); // 每3秒切换一次图片
+		</script>
+
+	</body>
+</html>

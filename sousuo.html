@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秒购搜索</title>
+    <link rel="stylesheet" href="css/suosou.css">
+</head>
+<body>
+    <!-- 顶部导航栏，包括返回按钮和时钟 -->
+    <div class="header">
+        <button onclick="window.location.href='zhuye.html'">返回</button>
+        <div class="clock" id="clock"></div>
+    </div>
+
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+        <input type="text" placeholder="搜索商品..." id="search-input">
+        <button onclick="searchProduct()">搜索</button>
+    </div>
+
+    <!-- 历史搜索 -->
+    <div class="section-title">历史搜索</div>
+    <div class="items-grid" id="history-search">
+        <!-- 动态生成历史搜索项目 -->
+    </div>
+
+    <!-- 猜你想搜 -->
+    <div class="section-title">猜你想搜</div>
+    <div class="items-grid">
+        <div class="item">冬季羽绒服</div>
+        <div class="item">智能手表</div>
+        <div class="item">毛衣外套</div>
+        <div class="item">双十一爆款</div>
+        <div class="item">运动鞋</div>
+        <div class="item">耳机</div>
+        <div class="item">跑步机</div>
+        <div class="item">护肤品套装</div>
+    </div>
+
+    <!-- 秒购热搜榜单 -->
+    <div class="section-title">秒购热搜</div>
+    <div class="hot-search-list">
+        <div class="hot-item">1. 跟着女明星学猫猫风穿搭 <span>热度727.3万</span></div>
+        <div class="hot-item">2. 2024冬季新趋风格 <span>热度720.6万</span></div>
+        <div class="hot-item">3. Jellycat穿搭做有趣的大人 <span>热度718.9万</span></div>
+        <div class="hot-item">4. LV事件你也不会好过开衫新 <span>热度639.8万</span></div>
+        <div class="hot-item">5. 考研考公人用老人机戒网瘾 <span>热度630.5万</span></div>
+        <div class="hot-item">6. 万圣节女巫丝绒长裙 <span>热度626.6万</span></div>
+        <div class="hot-item">7. 复古胶片感焦糖苔原风穿搭 <span>热度621.7万</span></div>
+        <div class="hot-item">8. 白鹿Jellycat风开衫 <span>热度618.7万</span></div>
+        <div class="hot-item">9. 皇冠曲奇大战蓝罐 <span>热度615.2万</span></div>
+        <div class="hot-item">10. LV最新秋冬新款 <span>热度610.3万</span></div>
+    </div>
+
+    <footer>
+        秒购商城 &copy; 2024. 热搜榜单持续更新中。
+    </footer>
+
+    <!-- JavaScript to handle clock and search functionality -->
+    <script>
+        // 实时时钟功能
+        function updateClock() {
+            const clockElement = document.getElementById('clock');
+            const now = new Date();
+            clockElement.innerText = now.toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+
+        // 搜索按钮的跳转功能
+        function searchProduct() {
+            const searchTerm = document.getElementById('search-input').value;
+            // 这里你可以处理搜索逻辑，例如跳转到搜索结果页面
+            alert('搜索功能尚未实现，您输入的内容是：' + searchTerm);
+        }
+
+        // 模拟历史搜索数据
+        const historyData = ['牛仔裤', '连衣裙', '运动鞋', '羽绒服', '耳机', '智能手表', '毛衣', '卫衣'];
+        const historyContainer = document.getElementById('history-search');
+
+        historyData.forEach(item => {
+            const div = document.createElement('div');
+            div.classList.add('item');
+            div.innerText = item;
+            historyContainer.appendChild(div);
+        });
+    </script>
+</body>
+</html>

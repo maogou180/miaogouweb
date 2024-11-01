@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>秒购导航栏示例</title>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
+
+			:root {
+				--primary-color: #ff6b6b;
+				--secondary-color: #4ecdc4;
+				--accent-color: #feca57;
+				--background-color: #f0f4f8;
+				--text-color: #333;
+				--light-gray: #e0e0e0;
+				--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				--transition-duration: 0.5s;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Noto Sans SC', Arial, sans-serif;
+				display: flex;
+				height: 100vh;
+				background-color: var(--background-color);
+				color: var(--text-color);
+			}
+
+			.sidebar {
+				width: 250px;
+				min-width: 250px;
+				background-color: #fff;
+				padding: 20px;
+				overflow-y: auto;
+				box-shadow: var(--box-shadow);
+				transition: all var(--transition-duration) ease;
+			}
+
+			.sidebar:hover {
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+			}
+
+			.sidebar h2 {
+				margin-top: 0;
+				margin-bottom: 20px;
+				color: var(--primary-color);
+				font-size: 1.5em;
+				text-align: center;
+				padding-bottom: 10px;
+				border-bottom: 2px solid var(--secondary-color);
+				transition: all var(--transition-duration) ease;
+			}
+
+			.sidebar:hover h2 {
+				transform: scale(1.05);
+			}
+
+			.sidebar ul {
+				list-style-type: none;
+			}
+
+			.sidebar li {
+				cursor: pointer;
+				padding: 12px 15px;
+				margin-bottom: 10px;
+				background-color: var(--light-gray);
+				border-radius: 8px;
+				transition: all var(--transition-duration) ease;
+				color: var(--text-color);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.sidebar li::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 0;
+				background-color: var(--primary-color);
+				transition: all var(--transition-duration) ease;
+				z-index: 1;
+			}
+
+			.sidebar li:hover::after {
+				width: 100%;
+			}
+
+			.sidebar li:hover {
+				color: #fff;
+				transform: translateX(10px);
+			}
+
+			.sidebar li span {
+				position: relative;
+				z-index: 2;
+				transition: all var(--transition-duration) ease;
+			}
+
+			.sidebar li:hover span {
+				padding-left: 10px;
+			}
+
+			.content {
+				flex-grow: 1;
+				padding: 30px;
+				transition: all var(--transition-duration) ease;
+				overflow-y: auto;
+			}
+
+			.subcategory-list {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+				gap: 20px;
+				list-style-type: none;
+				padding: 0;
+			}
+
+			.subcategory-list li {
+				background-color: #ffffff;
+				padding: 15px;
+				border-radius: 8px;
+				text-align: center;
+				box-shadow: var(--box-shadow);
+				transition: all var(--transition-duration) ease;
+				cursor: pointer;
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			.subcategory-list li:hover {
+				transform: translateY(-5px) scale(1.05);
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+				background-color: var(--secondary-color);
+				color: #fff;
+			}
+
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.subcategory-list.visible li {
+				animation: fadeInUp 0.8s ease forwards;
+			}
+
+			.subcategory-list li:nth-child(1) {
+				animation-delay: 0.1s;
+			}
+
+			.subcategory-list li:nth-child(2) {
+				animation-delay: 0.2s;
+			}
+
+			.subcategory-list li:nth-child(3) {
+				animation-delay: 0.3s;
+			}
+
+			.subcategory-list li:nth-child(4) {
+				animation-delay: 0.4s;
+			}
+
+			.subcategory-list li:nth-child(5) {
+				animation-delay: 0.5s;
+			}
+
+			.subcategory-list li:nth-child(6) {
+				animation-delay: 0.6s;
+			}
+
+			.subcategory-list li:nth-child(7) {
+				animation-delay: 0.7s;
+			}
+
+			.subcategory-list li:nth-child(8) {
+				animation-delay: 0.8s;
+			}
+
+			.subcategory-list li:nth-child(9) {
+				animation-delay: 0.9s;
+			}
+
+			#category-title {
+				margin-bottom: 20px;
+				font-size: 2em;
+				color: var(--primary-color);
+				border-bottom: 3px solid var(--secondary-color);
+				padding-bottom: 10px;
+				transition: all var(--transition-duration) ease;
+			}
+
+			#category-title:hover {
+				transform: translateY(-5px);
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			.back-btn {
+				display: inline-block;
+				padding: 10px 20px;
+				background-color: var(--accent-color);
+				color: var(--text-color);
+				text-decoration: none;
+				border-radius: 5px;
+				margin-bottom: 20px;
+				transition: all var(--transition-duration) ease;
+				font-weight: bold;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.back-btn::after {
+				content: '';
+				position: absolute;
+				left: -100%;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(255, 255, 255, 0.3);
+				transition: all var(--transition-duration) ease;
+			}
+
+			.back-btn:hover::after {
+				left: 100%;
+			}
+
+			.back-btn:hover {
+				background-color: var(--primary-color);
+				color: #fff;
+				transform: scale(1.05);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			}
+
+			@media (max-width: 768px) {
+				.sidebar {
+					width: 200px;
+					min-width: 200px;
+				}
+
+				.content {
+					padding: 20px;
+				}
+
+				#category-title {
+					font-size: 1.5em;
+				}
+
+				.subcategory-list {
+					grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="sidebar">
+			<h2>秒购商品分类</h2>
+			<ul id="category-list">
+				<!-- 分类将通过JavaScript动态添加 -->
+			</ul>
+		</div>
+
+		<div class="content">
+			<a href="zhuye.html" class="back-btn" id="back-btn">返回主页</a>
+			<h2 id="category-title">请选择一个分类</h2>
+			<ul id="subcategory-list" class="subcategory-list">
+				<!-- 子分类将通过JavaScript动态添加 -->
+			</ul>
+		</div>
+
+		<script>
+			const categories = [{
+					id: 'digital',
+					name: '数码',
+					subcategories: ['手机', '电脑', '平板', '智能手表', '数码相机', '游戏机', '音响', '耳机', '更多...']
+				},
+				{
+					id: 'appliances',
+					name: '家电',
+					subcategories: ['电视', '冰箱', '洗衣机', '空调', '微波炉', '电饭煲', '吸尘器', '更多...']
+				},
+				{
+					id: 'fashion',
+					name: '服饰',
+					subcategories: ['男装', '女装', '童装', '内衣', '鞋靴', '箱包', '配饰', '更多...']
+				},
+				{
+					id: 'beauty',
+					name: '美妆',
+					subcategories: ['护肤', '彩妆', '香水', '美发', '美甲', '工具', '更多...']
+				},
+				{
+					id: 'food',
+					name: '食品',
+					subcategories: ['零食', '饮料', '生鲜', '酒类', '茶叶', '粮油', '调味品', '更多...']
+				},
+				{
+					id: 'home',
+					name: '家居',
+					subcategories: ['家具', '床上用品', '厨具', '灯具', '装饰品', '收纳用品', '更多...']
+				},
+				{
+					id: 'books',
+					name: '图书',
+					subcategories: ['文学', '教育', '童书', '艺术', '生活', '科技', '更多...']
+				},
+				{
+					id: 'sports',
+					name: '运动',
+					subcategories: ['跑步', '健身', '球类', '户外', '游泳', '瑜伽', '更多...']
+				},
+				{
+					id: 'auto',
+					name: '汽车',
+					subcategories: ['整车', '配件', '用品', '维修', '美容', '更多...']
+				},
+				{
+					id: 'mother',
+					name: '母婴',
+					subcategories: ['奶粉', '尿裤', '玩具', '童装', '孕妇用品', '更多...']
+				},
+			];
+
+			function showSubcategories(category) {
+				const categoryTitle = document.getElementById('category-title');
+				const subcategoryList = document.getElementById('subcategory-list');
+				categoryTitle.textContent = `已选择分类: ${category.name}`;
+				subcategoryList.innerHTML = ''; // 清空子分类
+
+				subcategoryList.classList.remove('visible');
+
+				setTimeout(() => {
+					category.subcategories.forEach(subcategory => {
+						const li = document.createElement('li');
+						li.textContent = subcategory;
+						subcategoryList.appendChild(li);
+					});
+
+					subcategoryList.classList.add('visible');
+				}, 50);
+			}
+
+			function initializeSidebar() {
+				const categoryList = document.getElementById('category-list');
+				categories.forEach(category => {
+					const li = document.createElement('li');
+					const span = document.createElement('span');
+					span.textContent = category.name;
+					li.appendChild(span);
+					li.onclick = () => showSubcategories(category);
+					categoryList.appendChild(li);
+				});
+			}
+
+			// 初始化侧边栏
+			initializeSidebar();
+
+			// 返回按钮功能
+			document.getElementById('back-btn').addEventListener('click', function(e) {
+				// 链接行为由 HTML 的 href 属性控制
+			});
+		</script>
+	</body>
+</html>

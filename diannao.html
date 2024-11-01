@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>电脑专场</title>
+		<link rel="stylesheet" href="css/diannao.css">
+	</head>
+	<body>
+		<!-- 返回首页按钮 -->
+
+
+		<!-- 导航栏 -->
+		<header>
+			<h1>电脑专场特惠</h1>
+			<nav>
+				<ul>
+					<li><a href="erji.html">耳机专区</a></li>
+					<li><a href="shouji.html">手机专区</a></li>
+					<li><a href="diannao.html" class="active">电脑专区</a></li>
+
+				</ul>
+			</nav>
+		</header>
+
+		<!-- 主体内容 -->
+		<main>
+			<!-- 促销横幅 -->
+			<section class="banner">
+				<p>全场折扣高达 30%，限时优惠！</p>
+			</section>
+
+			<!-- 产品展示 -->
+			<section class="product-list">
+				<div class="product">
+					<img src="img/computer1.jpg" alt="高性能笔记本 A">
+					<h2>高清台式机A<h2>
+							<p class="description">23.8 英寸高清屏，配备 Intel i7 处理器和 16GB 内存。</p>
+							<p class="price">￥4,999</p>
+							<button class="add-to-cart" data-product="高性能笔记本 A" data-price="4999">加入购物车</button>
+				</div>
+				<div class="product">
+					<img src="img/computer2.jpg" alt="轻薄笔记本 B">
+					<h2>轻薄笔记本 B</h2>
+					<p class="description">13 英寸轻薄设计，搭载 AMD Ryzen 5 处理器，超长续航。</p>
+					<p class="price">￥6,999</p>
+					<button class="add-to-cart" data-product="轻薄笔记本 B" data-price="6999">加入购物车</button>
+				</div>
+				<div class="product">
+					<img src="img/computer3.jpg" alt="游戏笔记本 C">
+					<h2>游戏笔记本 C</h2>
+					<p class="description">17 英寸超清屏幕，配备 GeForce RTX 3060 显卡，流畅运行大型游戏。</p>
+					<p class="price">￥8,299</p>
+					<button class="add-to-cart" data-product="游戏笔记本 C" data-price="8299">加入购物车</button>
+				</div>
+				<div class="product">
+					<img src="img/computer4.png" alt="商务笔记本 D">
+					<h2>商务笔记本 D</h2>
+					<p class="description">14 英寸轻便设计，Intel i5 处理器，适合日常办公需求。</p>
+					<p class="price">￥5,499</p>
+					<button class="add-to-cart" data-product="商务笔记本 D" data-price="5499">加入购物车</button>
+				</div>
+				<div class="product">
+					<img src="img/computer5.jpeg" alt="超清屏笔记本 E">
+					<h2>超清屏笔记本 E</h2>
+					<p class="description">16 英寸 4K 屏幕，适合专业图形设计与视频剪辑。</p>
+					<p class="price">￥9,999</p>
+					<button class="add-to-cart" data-product="超清屏笔记本 E" data-price="9999">加入购物车</button>
+				</div>
+			</section>
+
+			<!-- 购物车侧边栏 -->
+			<section id="cart-section">
+				<h2>购物车</h2>
+				<div id="cart-items"></div>
+				<p id="cart-total">总价: ￥0</p>
+				<button id="clear-cart">清空购物车</button>
+				<!-- HTML 部分 -->
+				<div>
+					<label for="address">收货地址:</label>
+					<input type="text" id="address" placeholder="请输入收货地址">
+				</div>
+				<div>
+					<label for="shipping-method">配送方式:</label>
+					<select id="shipping-method">
+						<option value="standard">标准快递 (￥10)</option>
+						<option value="express">快速配送 (￥20)</option>
+					</select>
+				</div>
+
+
+				<button id="checkout">结算</button>
+			</section>
+		</main>
+		<div class="return-button">
+			<a href="zhuye.html">返回首页</a>
+		</div>
+		</div>
+		<script src="js/diannao.js"></script>
+	</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>秒购 - 您的一站式购物平台</title>
+		<link rel="stylesheet" href="css/zhuye.css">
+
+	</head>
+	<body>
+		<header>
+			<div class="header-content">
+				<a href="shouye.html"><img src="./img/logo.png" class="logo1" /></a>
+
+				<div class="search-bar">
+					<input type="text" placeholder="搜索商品..." id="search-input" onclick="searchProduct()">
+					<button onclick="searchProduct()">搜索</button>
+				</div>
+
+				<div class="location-select">
+					<select id="province-dropdown" onchange="updateCities()">
+						<option value="">选择省份</option>
+						<option value="北京">北京市</option>
+						<option value="天津">天津市</option>
+						<option value="上海">上海市</option>
+						<option value="重庆">重庆市</option>
+						<option value="河北省">河北省</option>
+						<option value="山西省">山西省</option>
+						<option value="内蒙古自治区">内蒙古自治区</option>
+						<option value="辽宁省">辽宁省</option>
+						<option value="吉林省">吉林省</option>
+						<option value="黑龙江省">黑龙江省</option>
+						<option value="江苏省">江苏省</option>
+						<option value="浙江省">浙江省</option>
+						<option value="安徽省">安徽省</option>
+						<option value="福建省">福建省</option>
+						<option value="江西省">江西省</option>
+						<option value="山东省">山东省</option>
+						<option value="河南省">河南省</option>
+						<option value="湖北省">湖北省</option>
+						<option value="湖南省">湖南省</option>
+						<option value="广东省">广东省</option>
+						<option value="广西壮族自治区">广西壮族自治区</option>
+						<option value="海南省">海南省</option>
+						<option value="四川省">四川省</option>
+						<option value="贵州省">贵州省</option>
+						<option value="云南省">云南省</option>
+						<option value="西藏自治区">西藏自治区</option>
+						<option value="陕西省">陕西省</option>
+						<option value="甘肃省">甘肃省</option>
+						<option value="青海省">青海省</option>
+						<option value="宁夏回族自治区">宁夏回族自治区</option>
+						<option value="新疆维吾尔自治区">新疆维吾尔自治区</option>
+					</select>
+
+					<select id="city-dropdown" onchange="selectCity()" style="display:none;">
+						<option value="">选择城市</option>
+					</select>
+				</div>
+
+				<nav>
+					<ul>
+						<li><a href="shouye.html">首页</a></li>
+						<li><a href="fenlei.html">分类</a></li>
+						<li><a href="#" id="cart-icon">购物车 <span id="cart-count">0</span></a></li>
+						<li><a href="#" id="account-link">我的账户</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+
+
+		<main>
+			<div class="carousel">
+				<img src="img/img1.jpg" alt="促销活动1" class="active" data-url="shouji.html">
+				<img src="img/img2.jpg" alt="促销活动2" data-url="shouji.html">
+				<img src="img/img3.jpg" alt="促销活动3" data-url="erji.html">
+				<div class="carousel-nav">
+					<button class="active"></button>
+					<button></button>
+					<button></button>
+				</div>
+			</div>
+			</div>
+
+			<div class="categories" id="category-container">
+				<div class="category">
+					<img src="img/img4.jpg" alt="电子产品">
+					<h2>电子产品</h2>
+					<div class="dropdown">
+						<p>最新科技产品，满足你的数字生活需求。从智能手机到平板电脑，应有尽有。</p>
+					</div>
+				</div>
+				<div class="category">
+					<img src="img/img5.jpg" alt="服装">
+					<h2>服装</h2>
+					<div class="dropdown">
+						<p>从时尚潮流到经典款式，展现你的自我风格。这里有各种风格的服装，适合不同场合。</p>
+					</div>
+				</div>
+				<div class="category">
+					<img src="img/img6.jpg" alt="家居">
+					<h2>家居</h2>
+					<div class="dropdown">
+						<p>舒适、美观且实用的家具，营造理想环境。让你的家更温馨，生活更舒适。</p>
+					</div>
+				</div>
+				<div class="category">
+					<img src="img/img7.jpg" alt="美妆">
+					<h2>美妆</h2>
+					<div class="dropdown">
+						<p>多样化护肤和化妆品，让你焕然一新。我们的产品适合各种肤质，帮助你展现自然之美。</p>
+					</div>
+				</div>
+				<div class="category">
+					<img src="img/img8.jpg" alt="食品">
+					<h2>食品</h2>
+					<div class="dropdown">
+						<p>新鲜健康的食品，满足你的味蕾。从有机蔬菜到精致零食，确保每一口都是美味与健康的结合。</p>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="products">
+				<div class="product">
+					<img src="img/img9.jpg" alt="商品1">
+					<h3>时尚T恤</h3>
+					<p>¥99.00</p>
+					<button class="view-product" data-id="1">查看详情</button>
+				</div>
+				<div class="product">
+					<img src="img/img10.jpg" alt="商品2">
+					<h3>智能手表</h3>
+					<p>¥599.00</p>
+					<button class="view-product" data-id="2">查看详情</button>
+				</div>
+				<div class="product">
+					<img src="img/img11.jpg" alt="商品3">
+					<h3>护肤套装</h3>
+
+					<p>¥299.00</p>
+					<button class="view-product" data-id="3">查看详情</button>
+				</div>
+				<div class="product">
+					<img src="img/img12.jpg" alt="商品4">
+					<h3>无线耳机</h3>
+					<p>¥399.00</p>
+					<button class="view-product" data-id="4">查看详情</button>
+				</div>
+				<div class="product">
+					<img src="img/img13.jpg" alt="商品5">
+					<h3>运动鞋</h3>
+					<p>¥499.00</p>
+					<button class="view-product" data-id="5">查看详情</button>
+				</div>
+				<div class="product">
+					<img src="img/img14.jpg" alt="商品6">
+					<h3>智能音箱</h3>
+					<p>¥299.00</p>
+					<button class="view-product" data-id="6">查看详情</button>
+				</div>
+				<div class="product">
+					<img src="img/img15.jpg" alt="商品7">
+					<h3>平板电脑</h3>
+					<p>¥1999.00</p>
+					<button class="view-product" data-id="7">查看详情</button>
+				</div>
+				<div class="product">
+					<img src="img/img16.jpg" alt="商品8">
+					<h3>咖啡机</h3>
+					<p>¥799.00</p>
+					<button class="view-product" data-id="8">查看详情</button>
+				</div>
+			</div>
+			<div class="banner">
+				<div class="marquee">
+					<div class="marquee-content">
+						热门活动：新用户注册即送100元优惠券！限时特惠，全场8折起！免费送货，七天无理由退换！大牌闪购，每天10点准时开抢！
+					</div>
+				</div>
+			</div>
+
+		</main>
+
+		<div id="clock"></div>
+		<div id="back-to-top">↑</div>
+
+		<footer>
+			<p>&copy; 2023 秒购 版权所有</p>
+		</footer>
+
+		<div id="cart-modal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h2>购物车</h2>
+				<div id="cart-items"></div>
+				<p>总计: <span id="cart-total">¥0.00</span></p>
+				<button id="checkout">结算</button>
+			</div>
+		</div>
+
+		<div id="account-status"></div>
+		<div id="account-modal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h2>我的账户</h2>
+				<form id="login-form">
+					<input type="text" placeholder="用户名" required>
+					<input type="password" placeholder="密码" required>
+					<button type="submit">登录</button>
+				</form>
+				<p>还没有账户？<a href="index.html" id="register-link">立即注册</a></p>
+			</div>
+		</div>
+		<div id="product-modal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<img id="product-image" src="" alt="商品图片">
+				<div class="product-details">
+					<h2 id="product-name"></h2>
+					<p id="product-price"></p>
+					<p id="product-description"></p>
+					<button id="add-to-cart">加入购物车</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="checkout-modal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h2>结算</h2>
+				<form id="checkout-form">
+					<input type="text" placeholder="收货人姓名" required>
+					<input type="tel" placeholder="联系电话" required>
+					<textarea placeholder="收货地址" required></textarea>
+					<button type="submit">提交订单</button>
+				</form>
+			</div>
+		</div>
+
+		<script src="js/zhuye.js"></script>
+	</body>
+</html>

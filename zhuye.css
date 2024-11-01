@@ -1,0 +1,533 @@
+:root {
+	--primary-color: #ff6b6b;
+	--secondary-color: #4ecdc4;
+	--accent-color: #feca57;
+	--background-color: #f0f4f8;
+	/* 新添加的背景色 */
+	--text-color: #333;
+	--light-gray: #e0e0e0;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	background-color: var(--background-color);
+	color: var(--text-color);
+	line-height: 1.6;
+}
+
+header {
+	background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+.header-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.logo {
+	font-size: 2rem;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+}
+
+.search-bar {
+	display: flex;
+	flex-grow: 1;
+	margin: 0 2rem;
+}
+
+.search-bar input {
+	flex-grow: 1;
+	padding: 0.5rem;
+	border: 2px solid var(--light-gray);
+	border-right: none;
+	border-radius: 4px 0 0 4px;
+	font-size: 1rem;
+}
+
+.search-bar button {
+	padding: 0.5rem 1rem;
+	background-color: var(--primary-color);
+	color: white;
+	border: none;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+	background-color: #ff8787;
+}
+
+.location-select {
+	position: relative;
+}
+
+.location-select select {
+	padding: 0.5rem;
+	border: 2px solid var(--light-gray);
+	border-radius: 4px;
+	background-color: white;
+}
+
+nav ul {
+	display: flex;
+	list-style-type: none;
+}
+
+nav ul li {
+	margin-left: 1rem;
+}
+
+nav ul li a {
+	color: white;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+	color: var(--accent-color);
+}
+
+main {
+	margin-top: 80px;
+	padding: 2rem;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.carousel {
+	position: relative;
+	height: 460px;
+	margin-top: 100px;
+	text-align: center;
+	overflow: hidden;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	background-color: white;
+}
+
+.carousel img {
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: auto;
+	height: auto;
+	object-fit: cover;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.carousel img.active {
+	opacity: 1;
+}
+
+.carousel-nav {
+	position: absolute;
+	bottom: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+}
+
+.carousel-nav button {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	border: none;
+	background-color: rgba(255, 255, 255, 0.5);
+	margin: 0 0.5rem;
+	cursor: pointer;
+}
+
+.carousel-nav button.active {
+	background-color: white;
+}
+
+.categories {
+	display: flex;
+	justify-content: space-between;
+	/* 类别并排显示 */
+	margin: 20px 0;
+	/* 上下间距 */
+}
+
+.category {
+	position: relative;
+	/* 为下拉框定位提供上下文 */
+	text-align: center;
+	/* 文字居中 */
+	margin: 0 10px;
+	/* 类别间距 */
+	width: 18%;
+	/* 每个类别的宽度 */
+}
+
+.category img {
+	width: 100%;
+	/* 图片宽度填满 */
+	height: 150px;
+	/* 固定高度 */
+	object-fit: cover;
+	/* 图片填充，保持比例 */
+	border-radius: 8px;
+	/* 圆角效果 */
+}
+
+.dropdown {
+	display: none;
+	/* 默认隐藏下拉框 */
+	position: absolute;
+	/* 绝对定位 */
+	top: 100%;
+	/* 在类别下方 */
+	left: 50%;
+	/* 水平居中 */
+	transform: translateX(-50%);
+	/* 调整居中 */
+	background: #fff;
+	/* 背景色 */
+	border: 1px solid #ddd;
+	/* 边框 */
+	border-radius: 4px;
+	/* 圆角 */
+	padding: 10px;
+	/* 内边距 */
+	z-index: 10;
+	/* 确保在其他元素之上 */
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	/* 阴影效果 */
+	transition: opacity 0.3s ease;
+	/* 渐变效果 */
+	width: 100%;
+}
+
+.dropdown p {
+	margin: 0;
+	/* 去掉段落的默认上下间距 */
+	font-size: 0.9em;
+	/* 字体大小 */
+	color: #333;
+	/* 文字颜色 */
+}
+
+.category:hover .dropdown,
+.category:focus-within .dropdown {
+	display: block;
+	/* 鼠标悬停或聚焦时显示下拉框 */
+}
+
+
+
+.products {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+.product {
+	background-color: white;
+	border-radius: 8px;
+	padding: 1rem;
+	text-align: center;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease;
+}
+
+.product:hover {
+	transform: translateY(-5px);
+}
+
+.product img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 4px;
+	margin-bottom: 0.5rem;
+}
+
+.product h3 {
+	font-size: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.product p {
+	color: var(--primary-color);
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+
+.product button {
+	background-color: var(--primary-color);
+	color: white;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.product button:hover {
+	background-color: #ff8787;
+}
+
+.banner {
+	background-color: #3498db;
+	/* 背景颜色 */
+	color: #fff;
+	/* 文字颜色 */
+	padding: 10px 0;
+	/* 内边距 */
+	overflow: hidden;
+	/* 隐藏溢出内容 */
+	position: relative;
+	/* 使子元素可以绝对定位 */
+	white-space: nowrap;
+	/* 防止文本换行 */
+}
+
+.marquee {
+	display: inline-block;
+	/* 使内容横向排列 */
+	animation: marquee 10s linear infinite;
+	/* 动画效果 */
+}
+
+.marquee-content {
+	display: inline-block;
+	/* 使内容横向排列 */
+	padding-left: 100%;
+	/* 左侧间距 */
+}
+
+/* 定义动画 */
+@keyframes marquee {
+	0% {
+		transform: translate(0, 0);
+		/* 初始位置 */
+	}
+
+	100% {
+		transform: translate(-100%, 0);
+		/* 结束位置 */
+	}
+}
+
+
+#clock {
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 0.5rem;
+	border-radius: 4px;
+	font-size: 0.9rem;
+	z-index: 1000;
+}
+
+#back-to-top {
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	background-color: var(--primary-color);
+	color: white;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+	opacity: 0;
+	visibility: hidden;
+}
+
+#back-to-top.visible {
+	opacity: 1;
+	visibility: visible;
+}
+
+#back-to-top:hover {
+	background-color: #ff8787;
+}
+
+footer {
+	background-color: #333;
+	color: white;
+	text-align: center;
+	padding: 2rem 0;
+	margin-top: 2rem;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1001;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	max-width: 600px;
+	border-radius: 8px;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+}
+
+#cart-icon {
+	position: relative;
+	cursor: pointer;
+}
+
+#cart-count {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	background-color: var(--accent-color);
+	color: white;
+	border-radius: 50%;
+	padding: 2px 6px;
+	font-size: 0.8rem;
+}
+
+.cart-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid var(--light-gray);
+}
+
+.cart-item-info {
+	flex-grow: 1;
+}
+
+.cart-item-quantity {
+	display: flex;
+	align-items: center;
+}
+
+.cart-item-quantity button {
+	background-color: var(--light-gray);
+	border: none;
+	width: 25px;
+	height: 25px;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+.cart-item-quantity span {
+	margin: 0 0.5rem;
+}
+
+#product-modal .modal-content {
+	display: flex;
+	gap: 2rem;
+}
+
+#product-modal img {
+	width: 50%;
+	max-height: 400px;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+#product-modal .product-details {
+	flex-grow: 1;
+}
+
+.snowflake {
+	position: fixed;
+	top: -10px;
+	z-index: 9999;
+	user-select: none;
+	cursor: default;
+	animation: fall 10s linear;
+}
+
+@keyframes fall {
+	0% {
+		transform: translateY(0vh) rotate(0deg);
+	}
+
+	100% {
+		transform: translateY(100vh) rotate(360deg);
+	}
+}
+
+@media (max-width: 768px) {
+	.header-content {
+		flex-direction: column;
+	}
+
+	.search-bar {
+		margin: 1rem 0;
+		width: 100%;
+	}
+
+	nav ul {
+		margin-top: 1rem;
+	}
+
+	.category {
+		width: calc(50% - 0.5rem);
+	}
+
+	#product-modal .modal-content {
+		flex-direction: column;
+	}
+
+	#product-modal img {
+		width: 100%;
+	}
+
+	.logo1 {
+		width: 2rem !important;
+		height: 2rem !important;
+		border-radius: 50%;
+	}
+}

@@ -1,0 +1,128 @@
+body {
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(135deg, rgba(204, 153, 255, 0.9), rgba(102, 204, 255, 0.6));
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+	background: linear-gradient(90deg, #ff8787, #ff6b6b);
+	/* 渐变背景 */
+	color: white;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+.header button {
+	background-color: white;
+	color: #ff5722;
+	border: none;
+	padding: 8px 16px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: background-color 0.3s;
+}
+
+.header button:hover {
+	background-color: #ffccbc;
+}
+
+.clock {
+	font-size: 16px;
+}
+
+.search-bar {
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
+}
+
+.search-bar input {
+	width: 70%;
+	padding: 12px;
+	border-radius: 20px;
+	border: 1px solid #ddd;
+	font-size: 16px;
+}
+
+.search-bar button {
+	padding: 12px 20px;
+	background-color: #ff8787;
+	/* 改为主色调 */
+	color: white;
+	border: none;
+	border-radius: 20px;
+	margin-left: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+	background-color: #ff6b6b;
+	/* 悬停效果 */
+}
+
+.section-title {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 20px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #ff5722;
+	color: #333;
+}
+
+.items-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 15px;
+	margin: 0 20px;
+}
+
+.item {
+	background-color: white;
+	padding: 10px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.3s;
+	/* 添加变换效果 */
+}
+
+.item:hover {
+	background-color: #ffe0b2;
+	transform: scale(1.02);
+	/* 悬停时放大 */
+}
+
+.hot-search-list {
+	margin: 20px;
+}
+
+.hot-item {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+	font-size: 14px;
+}
+
+.hot-item span {
+	color: #ff8787;
+	font-weight: bold;
+}
+
+footer {
+	margin-top: 20px;
+	padding: 20px;
+	text-align: center;
+	background-color: #f1f1f1;
+	font-size: 12px;
+	color: #999;
+}
